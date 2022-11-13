@@ -80,22 +80,28 @@ float median(int *a,int size){
 }
 
 int mode(int *a,int size){
-    int b[100],c[100];
-
-    for(int i=0;i<size;i++){
-    for(int j=0;j<size;j++){
-        if(a[i]!=b[j]){
-            b[j]=a[i];
-        }
-        else{
-           c[i]=1;
-
-            }
-        }
-    }
-    for(int i=0;i<size;i++){
-        cout<<c[i];
-    }
+       int max_count = 1, res = a[0], count = 1; 
+    for (int i = 1; i < size; i++) { 
+        if (a[i] == a[i - 1]) 
+            count++; 
+        else { 
+            if (count > max_count) { 
+                max_count = count; 
+                res = a[i - 1]; 
+            } 
+            count = 1; 
+        } 
+    } 
+  
+     
+    if (count > max_count) 
+    { 
+        max_count = count; 
+        res = a[size - 1]; 
+    } 
+    
+    return res;
+}
     }
 
 
